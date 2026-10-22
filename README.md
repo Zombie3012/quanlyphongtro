@@ -62,23 +62,6 @@ Mở URL được Artisan in ra, đăng nhập bằng tài khoản demo ở trê
 npm run dev
 ```
 
-## Database hiện hữu chưa có migration history
-
-Ứng dụng mẫu có thể đã được tạo trước khi repository quản lý migration. Trước khi cập nhật schema hiện hữu:
-
-1. Tạo bản backup có thể restore và bản staging riêng.
-2. Kiểm tra đúng database/connection. Lệnh baseline mặc định chỉ kiểm tra; không ghi.
-3. Chạy `php artisan app:baseline-existing-database --database=mysql` trên staging. Chỉ dùng `--apply` sau khi đã xác minh schema và backup:
-
-   ```powershell
-   php artisan app:baseline-existing-database --database=mysql --apply
-   php artisan migrate --database=mysql --pretend
-   ```
-
-4. Xem danh sách migration pending; áp dụng migration thật trên staging, đối chiếu dữ liệu và kiểm tra khả năng restore trước khi triển khai.
-
-Baseline chỉ đánh dấu các migration cũ khi các bảng/cột bắt buộc khớp schema; migration thêm snapshot `rent_amount` vẫn pending nếu cột chưa tồn tại. Không chạy baseline hoặc migration trực tiếp trên database demo/production khi chưa có backup và xác nhận đúng target. MariaDB cũ hoặc máy thiếu bộ nhớ có thể không thực hiện được `ALTER TABLE invoices`; trong tình huống đó cần xử lý môi trường database trước khi triển khai.
-
 ## Kiểm thử
 
 ```powershell
