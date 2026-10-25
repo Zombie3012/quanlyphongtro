@@ -39,16 +39,18 @@ npm install
 npm run build
 ```
 
-Seeder demo chỉ chạy khi `APP_ENV=local` hoặc `testing`. Có thể đặt `DEMO_ACCOUNT_PASSWORD` trước khi seed; mặc định local là `ChangeMe123!`. Seeder có thể chạy lại mà không tạo thêm bản ghi trùng cho bộ demo.
+Seeder demo chỉ chạy khi `APP_ENV=local` hoặc `testing`. Seeder tạo dữ liệu cho 3 khu trọ, gồm phòng trống/đang thuê/đang sửa, người thuê, hợp đồng đang hiệu lực/đã kết thúc/bản nháp và hóa đơn đã thanh toán/chưa thanh toán. Seeder có thể chạy lại mà không tạo thêm bản ghi trùng cho bộ dữ liệu demo. Tất cả tài khoản demo được đặt cùng mật khẩu `12345678`.
 
 Tài khoản demo được seed:
 
-| Vai trò | Username | Mật khẩu mặc định local |
+| Vai trò | Username | Mật khẩu |
 |---|---|---|
-| Admin | `demo_admin` | `ChangeMe123!` |
-| Manager | `demo_manager` | `ChangeMe123!` |
+| Admin | `demo_admin` | `12345678` |
+| Manager — Khu trọ An Bình | `demo_manager` | `12345678` |
+| Manager — Nhà trọ Hòa Bình | `demo_manager_tanphu` | `12345678` |
+| Manager — Căn hộ mini Mộc Lan | `demo_manager_thuduc` | `12345678` |
 
-Đây là thông tin chỉ dùng ở môi trường demo local. Không dùng mật khẩu mặc định cho tài khoản thật.
+Các tài khoản và mật khẩu này chỉ dùng ở môi trường demo local/testing. Không dùng mật khẩu demo cho tài khoản thật. Tạo hoặc cập nhật dữ liệu demo bằng lệnh `php artisan db:seed`.
 
 ## Chạy ứng dụng
 
